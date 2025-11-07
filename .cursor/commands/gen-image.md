@@ -4,14 +4,14 @@
 Generate product images using Replicate's image generation models based on prompts stored in markdown files. No reference images needed - works purely from text prompts.
 
 ## Variables
-- **{prompt_file}**: `/Users/neat/New/demo_prompts.md`
-- **{output_dir}**: `/Users/neat/New/Generated_Images`
+- **{prompt_file}**: Path to markdown file containing prompts (one per line)
+- **{output_dir}**: Directory where generated images will be saved
 - **{timestamp}**: Current timestamp in format `YYYY-MM-DD_HH-MM-SS`
 - **{model}**: `google/nano-banana` (or search for alternatives)
 
 ## Product Details (for prompt enhancement)
-- **{base_prompt}**: "A premium smart coffee maker, matte black finish with brushed aluminum accents, 'AeroBrew' logo visible on front display, minimalist design"
-- **{product_details}**: "sleek cylindrical body, approximately 12 inches tall, touchscreen interface on front, glass carafe with wooden handle, built-in grinder visible on top, modern kitchen appliance aesthetic"
+- **{base_prompt}**: Base product description to enhance prompts
+- **{product_details}**: Additional product details to include in prompts
 
 ## Workflow
 
@@ -29,7 +29,7 @@ Generate product images using Replicate's image generation models based on promp
 
 ### 3. Generate images
 - For each prompt in `{prompt_file}`:
-  - Enhance prompt with product details:
+  - Enhance prompt with product details (if provided):
     ```
     {base_prompt}, {product_details}. 
     Setting: {prompt_from_file}
@@ -41,7 +41,7 @@ Generate product images using Replicate's image generation models based on promp
       "model_owner": "google",
       "model_name": "nano-banana",
       "input": {
-        "prompt": "[enhanced prompt]",
+        "prompt": "[enhanced prompt or original prompt]",
         "output_format": "jpg"
       }
     }
