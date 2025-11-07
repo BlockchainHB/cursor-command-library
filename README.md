@@ -273,18 +273,10 @@ A: Commit `.cursor/commands/` to your repo. Everyone on your team gets the same 
 
 ---
 
-## From the Builder
-
-I'm Hasaam, founding dev at LaunchFast. I learned to code 9 months ago through "vibe coding" with AI. These commands helped me scale from vibe coding to production-grade engineering.
-
-LaunchFast hit $22k MRR in 90 days serving 365 customers. These workflows powered that growth.
-
-If you're a solo founder or leading a dev team, commands will transform how you build with AI.
-
 **Connect:**
 - 🐦 Twitter: [@BlockchainHB](https://twitter.com/BlockchainHB)
 - 📺 YouTube: [Cursor Commands Tutorial](https://youtu.be/hkhrfvGaFgE)
-- 🚀 LaunchFast: [launchfa.st](https://launchfa.st)
+- 🚀 LaunchFast: [launchfast](https://launchfastlegacyx.com)
 
 ---
 
