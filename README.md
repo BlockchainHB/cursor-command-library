@@ -274,8 +274,8 @@ A: Commit `.cursor/commands/` to your repo. Everyone on your team gets the same 
 ---
 
 **Connect:**
-- 🐦 Twitter: [@BlockchainHB](https://twitter.com/BlockchainHB)
-- 📺 YouTube: [Cursor Commands Tutorial](https://youtu.be/hkhrfvGaFgE)
+- 🐦 Twitter: [@automatingwork](https://twitter.com/automatingwork)
+- 📺 Website: [hasaamb](https://hasaamb.com)
 - 🚀 LaunchFast: [launchfast](https://launchfastlegacyx.com)
 
 ---
