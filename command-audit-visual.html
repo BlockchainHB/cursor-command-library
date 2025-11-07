@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Command Audit Process</title>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/recharts@2.10.3/dist/Recharts.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+            background: #ffffff;
+            color: #37352f;
+            padding: 60px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            margin-bottom: 48px;
+        }
+        
+        .title {
+            font-size: 40px;
+            font-weight: 700;
+            color: #37352f;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            color: #787774;
+            font-weight: 400;
+        }
+        
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+        
+        .step-card {
+            background: #ffffff;
+            border: 1.5px solid #e9e9e7;
+            border-radius: 8px;
+            padding: 24px;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        
+        .step-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border-color: #d4d4d1;
+        }
+        
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: #f7f6f3;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #37352f;
+            margin-bottom: 16px;
+        }
+        
+        .step-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #37352f;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+        
+        .step-description {
+            font-size: 14px;
+            color: #787774;
+            line-height: 1.5;
+        }
+        
+        .flow-chart {
+            background: #ffffff;
+            border: 1.5px solid #e9e9e7;
+            border-radius: 8px;
+            padding: 32px;
+            margin-top: 32px;
+        }
+        
+        .flow-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #37352f;
+            margin-bottom: 24px;
+        }
+        
+        .highlight-box {
+            background: #f7f6f3;
+            border-left: 3px solid #37352f;
+            padding: 20px 24px;
+            border-radius: 4px;
+            margin-top: 32px;
+        }
+        
+        .highlight-text {
+            font-size: 16px;
+            color: #37352f;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 1200px) {
+            .steps-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .steps-container {
+                grid-template-columns: 1fr;
+            }
+            
+            body {
+                padding: 32px 20px;
+            }
+            
+            .title {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+        const { ComposedChart, Line, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } = Recharts;
+
+        function CommandAuditVisual() {
+            const steps = [
+                {
+                    number: 1,
+                    title: "List Repetitive Tasks",
+                    description: "Code reviews, git workflows, documentation, feature setup—write them all down."
+                },
+                {
+                    number: 2,
+                    title: "Start with Level 2",
+                    description: "These give you 80% of the value. Don't overcomplicate."
+                },
+                {
+                    number: 3,
+                    title: "Use Consistent Structure",
+                    description: "Title, Overview, Steps, Expected Output. Consistency matters more than complexity."
+                },
+                {
+                    number: 4,
+                    title: "Store Commands",
+                    description: "`.cursor/commands/` for projects, `~/.cursor/commands/` for personal library."
+                },
+                {
+                    number: 5,
+                    title: "Share with Team",
+                    description: "Push to team dashboard. Everyone gets updates automatically."
+                }
+            ];
+
+            // Data for the flow visualization
+            const flowData = steps.map((step, index) => ({
+                step: `Step ${step.number}`,
+                value: 100 - (index * 15), // Decreasing value to show progression
+                index: index
+            }));
+
+            return (
+                <div className="container">
+                    <div className="header">
+                        <h1 className="title">How to Decide What Commands to Build</h1>
+                        <p className="subtitle">A simple 5-step audit process</p>
+                    </div>
+
+                    <div className="steps-container">
+                        {steps.map((step) => (
+                            <div key={step.number} className="step-card">
+                                <div className="step-number">{step.number}</div>
+                                <div className="step-title">{step.title}</div>
+                                <div className="step-description">{step.description}</div>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="flow-chart">
+                        <div className="flow-title">Process Flow</div>
+                        <ResponsiveContainer width="100%" height={200}>
+                            <ComposedChart data={flowData}>
+                                <CartesianGrid strokeDasharray="3 3" stroke="#e9e9e7" />
+                                <XAxis 
+                                    dataKey="step" 
+                                    tick={{ fill: '#787774', fontSize: 12 }}
+                                    axisLine={{ stroke: '#e9e9e7' }}
+                                />
+                                <YAxis hide />
+                                <Tooltip 
+                                    contentStyle={{ 
+                                        backgroundColor: '#ffffff',
+                                        border: '1px solid #e9e9e7',
+                                        borderRadius: '6px',
+                                        fontSize: '12px'
+                                    }}
+                                />
+                                <Area 
+                                    type="monotone" 
+                                    dataKey="value" 
+                                    fill="#f7f6f3" 
+                                    stroke="#37352f"
+                                    strokeWidth={2}
+                                />
+                                <Line 
+                                    type="monotone" 
+                                    dataKey="value" 
+                                    stroke="#37352f" 
+                                    strokeWidth={2}
+                                    dot={{ fill: '#37352f', r: 4 }}
+                                />
+                            </ComposedChart>
+                        </ResponsiveContainer>
+                    </div>
+
+                    <div className="highlight-box">
+                        <div className="highlight-text">
+                            💡 <strong>Key Insight:</strong> Start with Level 2 workflow commands. They give you 80% of the value with minimal complexity.
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
+        ReactDOM.render(<CommandAuditVisual />, document.getElementById('root'));
+    </script>
+</body>
+</html>
