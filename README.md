@@ -59,7 +59,7 @@ Generate a comprehensive summary of codebase changes over the past 7-10 days.
 
 Watch our tutorial video on how to use Cursor Commands:
 
-**[Link to YouTube Video - Add your video URL here]**
+**https://youtu.be/hkhrfvGaFgE?si=SOP67E2hCKr6u7ml**
 
 This video covers:
 - How to set up custom commands in Cursor
